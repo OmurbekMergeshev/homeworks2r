@@ -2,7 +2,7 @@ import React from 'react'
 
 class Table extends React.Component {
   renderCell(row, col) {
-    const cellNum = row * + col + 1
+    const cellNum = row + col + 0
     return <td key={cellNum}>{cellNum}</td>
   }
 
