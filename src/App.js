@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Table extends React.Component {
+  renderCell(row, col) {
+    const cellNum = row * + col + 1
+    return <td key={cellNum}>{cellNum}</td>
+  }
+
+  renderRow(row) {
+    const cells = []
+    for (let col = 0; col < 6; col++) {
+      cells.push(this.renderCell(row, col))
+    }
+    return <tr key={row}>{cells}</tr>
+  }
+
+  render() {
+    const status = 'Таблицы'
+    const rows = []
+    for (let row = 0; row < 6; row++) {
+      rows.push(this.renderRow(row))
+    }
+
+    return(
+        <>
+          <div className='status'>{status}</div>
+          <table className='table'>
+            <tbody>{rows}</tbody>
+          </table>
+        </>
+    )
+  }
 }
 
-export default App;
+export default Table
